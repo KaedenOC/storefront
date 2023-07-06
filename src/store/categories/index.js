@@ -23,11 +23,14 @@ function categoriesReducer(state = initialState, action) {
           return category;
         })
       }
+      default:
+      return state;
   }
 }
 
+
 export const changeCategory = (category) => {
-  return{
+  return {
     type: 'CHANGE_CATEGORY',
     payload: category,
   }
