@@ -3,13 +3,14 @@ import { changeCategory } from '../../store/categories';
 import { ButtonGroup, Button } from '@mui/material';
 
 function Categories() {
-  const { categories } = useSelector((state) => state.categories);
+  const { categories } = useSelector((state) => state.store);
   console.log('categories', categories);
 
   const dispatch = useDispatch();
 
   const categoryHandler = (category) => {
     dispatch(changeCategory(category));
+    console.log('changeCategory', category);
   }
 
   return (
@@ -19,7 +20,7 @@ function Categories() {
         {
           categories.map((category, index) => (
 
-            <Button key={`categories-${index}`}>{category.displayName}</Button>
+            <Button key={`categories-${index}`} onClick={() => categoryHandler(category)}>{category.displayName}</Button>
           )
           )
         }
