@@ -1,29 +1,30 @@
 let initialState = {
   categories: [
-    { name: 'electronics', displayName: 'Electronics', description: 'definitely electronics' },
-    { name: 'food', displayName: 'Food', description: 'definitely food' },
-    { name: 'clothing', displayName: 'Clothing', description: 'definitely clothes' },
+    { name: 'electronics', displayName: 'Electronics' },
+    { name: 'food', displayName: 'Food' },
+    { name: 'clothing', displayName: 'Clothing' },
   ],
-  activeCategory: '',
+  products: [
+    { name: 'TV', category: 'electronics', price: 699.00, inStock: 5 },
+    { name: 'Radio', category: 'electronics', price: 99.00, inStock: 15 },
+    { name: 'Shirt', category: 'clothing', price: 9.00, inStock: 25 },
+    { name: 'Socks', category: 'clothing', price: 12.00, inStock: 10 },
+    { name: 'Apples', category: 'food', price: .99, inStock: 500 },
+    { name: 'Eggs', category: 'food', price: 1.99, inStock: 12 },
+    { name: 'Bread', category: 'food', price: 2.39, inStock: 90 },
+  ],
+  activeCategory: ''
 };
 
-function categoriesReducer(state = initialState, action) {
-  switch (action.type) {
-    case 'CHANGE_CATEGORY':
+function storeReducer(state=initialState, action){
+  switch(action.type){
+    case 'SET':
       return {
         ...state,
-        categories: state.categories.map(category => {
-          if (category.name === action.payload.name) { //payload is a property of action
-            return {
-              name: category.name,
-              displayName: category.displayName,
-              activeCategory: category.name,
-            }
-          }
-          return category;
-        })
+        activeCategory: action.payload,
+        products: initialState.products.filter(product => product.category === action.payload.name)
       }
-      default:
+    default:
       return state;
   }
 }
@@ -31,9 +32,9 @@ function categoriesReducer(state = initialState, action) {
 
 export const changeCategory = (category) => {
   return {
-    type: 'CHANGE_CATEGORY',
+    type: 'SET',
     payload: category,
   }
 }
 
-export default categoriesReducer;
+export default storeReducer;
