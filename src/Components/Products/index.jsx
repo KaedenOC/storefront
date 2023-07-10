@@ -9,7 +9,8 @@ import { CardMedia, Grid } from '@mui/material';
 
 export default function Products() {
 
-  const { activeCategory, products } = useSelector((state) => state.store)
+  const { activeCategory } = useSelector((state) => state.categories)
+  const { products } = useSelector((state) => state);
 
   return (
 

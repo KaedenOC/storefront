@@ -5,3 +5,5 @@ export const changeCategory = (category) => {
     payload: category,
   }
 }
+
+export default changeCategory;

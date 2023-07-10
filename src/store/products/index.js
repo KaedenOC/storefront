@@ -11,7 +11,7 @@ let initialState = [
 function productReducer(state=initialState, action){
   switch(action.type){
     case 'SET':
-      return initialState.products.filter(product => product.category === action.payload.name)
+      return initialState.filter(product => product.category === action.payload.name)
     default:
       return state;
   }
