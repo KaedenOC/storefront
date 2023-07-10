@@ -1,9 +1,6 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { SET } from "../constants";
 
-
-
-
 let initialState = {
   categories: [
     { name: 'electronics', displayName: 'Electronics' },
