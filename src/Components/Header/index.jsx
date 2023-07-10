@@ -7,11 +7,11 @@ function Header() {
   
   return(
     <>
-   <AppBar className='appBar'>
+   <AppBar className='toolBar'>
         <Toolbar>
           <Grid container>
             <Grid item>
-              <Typography variant="h4">Our Store</Typography>
+              <Typography variant="h4">Storefront</Typography>
             </Grid>
             <Grid item xs style={{ textAlign: 'right', alignSelf: 'center' }}>
               <Typography>CART ({cart.length})</Typography>
