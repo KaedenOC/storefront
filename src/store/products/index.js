@@ -1,3 +1,6 @@
+import { createReducer } from "@reduxjs/toolkit";
+import { SET } from "../constants";
+
 const initialState = {
   products: [
     { name: 'TV', category: 'electronics', price: 699.00, inStock: 5 },
@@ -10,15 +13,26 @@ const initialState = {
   ]
 };
 
-function productReducer(state=initialState, action){
-  switch(action.type){
-    case 'SET':
-      return {
+const productReducer = createReducer(
+  initialState,
+  {
+    [SET]: (state, action) => {
+      return{
         products: initialState.products.filter(product => product.category === action.payload.name)
       };
-    default:
-      return state;
+    }
   }
-}
+)
+
+// function productReducer(state=initialState, action){
+//   switch(action.type){
+//     case 'SET':
+//       return {
+//         products: initialState.products.filter(product => product.category === action.payload.name)
+//       };
+//     default:
+//       return state;
+//   }
+// }
 
 export default productReducer;
