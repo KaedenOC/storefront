@@ -1,10 +1,8 @@
-// import { createAction, createReducer } from "@reduxjs/toolkit";
+import { createReducer } from '@reduxjs/toolkit';
+import { SET } from "../constants";
 
-//create constants for actual actions and use them for reducer
 
-// const GET = 'GET';
 
-// export default categories = createAction('GET');
 
 let initialState = {
   categories: [
@@ -15,17 +13,31 @@ let initialState = {
   activeCategory: ''
 };
 
-function categoryReducer(state=initialState, action){
-  switch(action.type){
-    case 'SET':
+const categoryReducer = createReducer(
+  //first param is our initialState
+  initialState,
+  //second param is individual reducer properties
+  {
+    [SET]: (state, action) => {
       return {
         ...state,
         activeCategory: action.payload,
       }
-    default:
-      return state;
+    }
   }
-}
+);
+
+// function categoryReducer(state=initialState, action){
+//   switch(action.type){
+//     case 'SET':
+//       return {
+//         ...state,
+//         activeCategory: action.payload,
+//       }
+//     default:
+//       return state;
+//   }
+// }
 
 
 
