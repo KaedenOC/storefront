@@ -9,12 +9,12 @@ function SimpleCart(){
   return (
     <>
       {
-        cart.map((product, index) => {
+        cart.map((product, index) => (
           <p key={`simplecart-${index}`}>
             {product.name}
             <Button onClick={() => dispatch(remove(product))} variant="contained" color="error">X</Button>
           </p>
-        })
+        ))
       }
     </>
   )
