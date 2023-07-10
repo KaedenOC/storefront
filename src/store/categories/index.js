@@ -1,3 +1,11 @@
+// import { createAction, createReducer } from "@reduxjs/toolkit";
+
+//create constants for actual actions and use them for reducer
+
+// const GET = 'GET';
+
+// export default categories = createAction('GET');
+
 let initialState = {
   categories: [
     { name: 'electronics', displayName: 'Electronics' },
