@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { changeCategory } from '../../store/actions';
+import { SET } from '../../store/categories';
 import { ButtonGroup, Button } from '@mui/material';
 
 function Categories() {
@@ -9,7 +9,7 @@ function Categories() {
   const dispatch = useDispatch();
 
   const categoryHandler = (category) => {
-    dispatch(changeCategory(category));
+    dispatch(SET(category));
     console.log('changeCategory', category);
   }
 

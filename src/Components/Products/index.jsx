@@ -11,7 +11,7 @@ import { ADD_TO_CART } from '../../store/cart';
 export default function Products() {
 
   const { activeCategory } = useSelector((state) => state.categories)
-  const { products } = useSelector((state) => state.products);
+  const { products } = useSelector((state) => state);
   const dispatch = useDispatch();
 
   return (

@@ -1,28 +1,37 @@
-import { createReducer } from '@reduxjs/toolkit';
-import { SET } from "../constants";
+import { createSlice } from '@reduxjs/toolkit';
 
-let initialState = {
-  categories: [
-    { name: 'electronics', displayName: 'Electronics' },
-    { name: 'food', displayName: 'Food' },
-    { name: 'clothing', displayName: 'Clothing' },
-  ],
-  activeCategory: ''
-};
+const categorySlice = createSlice({
+  name: 'categories',
+  initialState: {
 
-const categoryReducer = createReducer(
-  //first param is our initialState
-  initialState,
-  //second param is individual reducer properties
-  {
-    [SET]: (state, action) => {
-      return {
-        ...state,
-        activeCategory: action.payload,
-      }
+    categories: [
+      { name: 'electronics', displayName: 'Electronics' },
+      { name: 'food', displayName: 'Food' },
+      { name: 'clothing', displayName: 'Clothing' },
+    ],
+    activeCategory: ''
+  },
+  reducers: {
+    SET: (state, action) => {
+      return {...state, activeCategory: action.payload}
     }
   }
-);
+})
+
+
+// const categoryReducer = createReducer(
+//   //first param is our initialState
+//   initialState,
+//   //second param is individual reducer properties
+//   {
+//     [SET]: (state, action) => {
+//       return {
+//         ...state,
+//         activeCategory: action.payload,
+//       }
+//     }
+//   }
+// );
 
 // function categoryReducer(state=initialState, action){
 //   switch(action.type){
@@ -38,4 +47,5 @@ const categoryReducer = createReducer(
 
 
 
-export default categoryReducer;
+export const { SET } = categorySlice.actions;
+export default categorySlice.reducer;
