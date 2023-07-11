@@ -7,7 +7,7 @@ function Header() {
   
   return(
     <>
-   <AppBar className='toolBar'>
+   <AppBar className='toolBar' data-testid='header'>
         <Toolbar>
           <Grid container>
             <Grid item>
