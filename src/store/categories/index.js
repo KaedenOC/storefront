@@ -1,3 +1,6 @@
+import { createReducer } from '@reduxjs/toolkit';
+import { SET } from "../constants";
+
 let initialState = {
   categories: [
     { name: 'electronics', displayName: 'Electronics' },
@@ -7,17 +10,31 @@ let initialState = {
   activeCategory: ''
 };
 
-function categoryReducer(state=initialState, action){
-  switch(action.type){
-    case 'SET':
+const categoryReducer = createReducer(
+  //first param is our initialState
+  initialState,
+  //second param is individual reducer properties
+  {
+    [SET]: (state, action) => {
       return {
         ...state,
         activeCategory: action.payload,
       }
-    default:
-      return state;
+    }
   }
-}
+);
+
+// function categoryReducer(state=initialState, action){
+//   switch(action.type){
+//     case 'SET':
+//       return {
+//         ...state,
+//         activeCategory: action.payload,
+//       }
+//     default:
+//       return state;
+//   }
+// }
 
 
 
