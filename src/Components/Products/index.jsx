@@ -1,24 +1,36 @@
+import { useDispatch, useSelector } from 'react-redux';
+import { When } from 'react-if';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { useDispatch, useSelector } from 'react-redux';
-import { When } from 'react-if';
 import { CardMedia, Grid } from '@mui/material';
-import { addToCart } from '../../store/actions';
+import { addToCart } from '../../store/cart';
+import { addProduct, decrementInventory, getProducts } from '../../store/products';
+import { useEffect } from 'react';
 
 export default function Products() {
 
   const { activeCategory } = useSelector((state) => state.categories)
-  const { products } = useSelector((state) => state.products);
+  const { products } = useSelector((state) => state);
   const dispatch = useDispatch();
+
+  const addDispatcher = (product) => {
+    dispatch(addToCart(product));
+    // dispatch(addProduct(product));
+    dispatch(decrementInventory(product));
+  }
+
+  useEffect(() => {
+    dispatch(getProducts(activeCategory.name))
+  }, [activeCategory]);
 
   return (
 
     <>
       <When condition={activeCategory}>
-        <h2>{activeCategory.displayName}</h2>
+        <h2>{activeCategory.name}</h2>
         <h4>Category Description Goes Here</h4>
         <Grid container spacing={2} width="70%" margin="auto">
           {
@@ -39,7 +51,7 @@ export default function Products() {
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button onClick={() => dispatch(addToCart(product))} size="small">Add To Cart</Button>
+                    <Button onClick={() => addDispatcher(product)} size="small">Add To Cart</Button>
                     <Button size="small">View Details</Button>
                   </CardActions>
                 </Card>
