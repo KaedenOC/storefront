@@ -26,33 +26,6 @@ export const getCategories = () => async (dispatch, getState) => {
   }
 
 
-// const categoryReducer = createReducer(
-//   //first param is our initialState
-//   initialState,
-//   //second param is individual reducer properties
-//   {
-//     [SET]: (state, action) => {
-//       return {
-//         ...state,
-//         activeCategory: action.payload,
-//       }
-//     }
-//   }
-// );
-
-// function categoryReducer(state=initialState, action){
-//   switch(action.type){
-//     case 'SET':
-//       return {
-//         ...state,
-//         activeCategory: action.payload,
-//       }
-//     default:
-//       return state;
-//   }
-// }
-
-
 
 export const { setCategory, setInitialCategories } = categorySlice.actions;
 export default categorySlice.reducer;

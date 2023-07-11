@@ -7,7 +7,8 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { CardMedia, Grid } from '@mui/material';
 import { addToCart } from '../../store/cart';
-import { addProduct } from '../../store/products';
+import { addProduct, getProducts } from '../../store/products';
+import { useEffect } from 'react';
 
 export default function Products() {
 
@@ -20,11 +21,15 @@ export default function Products() {
     dispatch(addProduct(product));
   }
 
+  useEffect(() => {
+    dispatch(getProducts(activeCategory.name))
+  }, [activeCategory]);
+
   return (
 
     <>
       <When condition={activeCategory}>
-        <h2>{activeCategory.displayName}</h2>
+        <h2>{activeCategory.name}</h2>
         <h4>Category Description Goes Here</h4>
         <Grid container spacing={2} width="70%" margin="auto">
           {

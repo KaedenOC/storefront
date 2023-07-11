@@ -12,7 +12,7 @@ function Categories() {
 
   const categoryHandler = (category) => {
     dispatch(setCategory(category));
-    dispatch(setProducts(category));
+    // dispatch(setProducts(category));
     console.log('changeCategory', category);
   }
 
