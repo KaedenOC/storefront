@@ -7,7 +7,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { CardMedia, Grid } from '@mui/material';
 import { addToCart } from '../../store/cart';
-import { addProduct, getProducts } from '../../store/products';
+import { addProduct, decrementInventory, getProducts } from '../../store/products';
 import { useEffect } from 'react';
 
 export default function Products() {
@@ -18,7 +18,8 @@ export default function Products() {
 
   const addDispatcher = (product) => {
     dispatch(addToCart(product));
-    dispatch(addProduct(product));
+    // dispatch(addProduct(product));
+    dispatch(decrementInventory(product));
   }
 
   useEffect(() => {
