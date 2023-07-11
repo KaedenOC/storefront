@@ -1,5 +1,6 @@
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCategory } from '../../store/categories';
+import { setCategory, getCategories } from '../../store/categories';
 import { setProducts } from '../../store/products';
 import { ButtonGroup, Button } from '@mui/material';
 
@@ -15,6 +16,10 @@ function Categories() {
     console.log('changeCategory', category);
   }
 
+  useEffect(() => {
+    dispatch(getCategories());
+  }, []);
+
   return (
     <>
       <h3>Browse Our Categories</h3>
@@ -22,7 +27,7 @@ function Categories() {
         {
           categories.map((category, index) => (
 
-            <Button key={`categories-${index}`} onClick={() => categoryHandler(category)}>{category.displayName}</Button>
+            <Button key={`categories-${index}`} onClick={() => categoryHandler(category)}>{category.name}</Button>
           )
           )
         }
