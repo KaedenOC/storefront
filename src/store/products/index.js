@@ -14,7 +14,7 @@ const productSlice = createSlice({
   name: 'products',
   initialState,
     reducers: {
-      setProducts: (state, action) => { initialState.filter(product => product.category === action.payload.name) },
+      setProducts: (state, action) => initialState.filter(product => product.category === action.payload.name),
       addProduct: (state, action) => state.map(product => product.name === action.payload.name ? { ...product, inStock: product.inStock - 1 } : product),
       removeProduct: (state, action) => state.map(product => product.name === action.payload.name ? { ...product, inStock: product.inStock + 1 } : product)
     },
