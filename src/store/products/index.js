@@ -23,19 +23,21 @@ const productSlice = createSlice({
 
   export const getProducts = (activeCategory) => async (dispatch) => {
     let response = await axios.get(`https://api-js401.herokuapp.com/api/v1/products?category=${activeCategory}`);
-    let products = response.data.results.filter(product => product.category === activeCategory);
     dispatch(setProducts(response.data.results));
   }
 
-export const incrementInventory = (product) => (dispatch) => {
+export const incrementInventory = (product) => async(dispatch) => {
+  product = {...product, inStock: product.inStock + 1};
+  await axios.put(`https://api-js401.herokuapp.com/api/v1/products/${product._id}`, product);
 
+  dispatch(getProducts(product.category));
 }
 
 export const decrementInventory = (product) => async(dispatch) => {
   product = {...product, inStock: product.inStock -1};
   await axios.put(`https://api-js401.herokuapp.com/api/v1/products/${product._id}`, product);
-  let response = await axios.get(`https://api-js401.herokuapp.com/api/v1/products?category=${product.category}`);
-  dispatch(setProducts(response.data.results));
+
+  dispatch(getProducts(product.category));
 }
 
 export const { addProduct, removeProduct, setProducts } = productSlice.actions;

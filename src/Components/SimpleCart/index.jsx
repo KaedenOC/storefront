@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { When } from 'react-if';
 import { removeFromCart } from '../../store/cart';
 import { Button } from "@mui/material";
-import { removeProduct } from "../../store/products";
+import { incrementInventory, removeProduct } from "../../store/products";
 
 function SimpleCart() {
   const { cart } = useSelector(state => state)
@@ -10,7 +10,7 @@ function SimpleCart() {
 
   const removeDispatcher = (product) => {
     dispatch(removeFromCart(product));
-    dispatch(removeProduct(product));
+    dispatch(incrementInventory(product));
   }
 
   return (
