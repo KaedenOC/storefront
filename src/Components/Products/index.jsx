@@ -1,18 +1,24 @@
+import { useDispatch, useSelector } from 'react-redux';
+import { When } from 'react-if';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { useDispatch, useSelector } from 'react-redux';
-import { When } from 'react-if';
 import { CardMedia, Grid } from '@mui/material';
-import { ADD_TO_CART } from '../../store/cart';
+import { addToCart } from '../../store/cart';
+import { addProduct } from '../../store/products';
 
 export default function Products() {
 
   const { activeCategory } = useSelector((state) => state.categories)
   const { products } = useSelector((state) => state);
   const dispatch = useDispatch();
+
+  const addDispatcher = (product) => {
+    dispatch(addToCart(product));
+    dispatch(addProduct(product));
+  }
 
   return (
 
@@ -39,7 +45,7 @@ export default function Products() {
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button onClick={() => dispatch(ADD_TO_CART(product))} size="small">Add To Cart</Button>
+                    <Button onClick={() => addDispatcher(product)} size="small">Add To Cart</Button>
                     <Button size="small">View Details</Button>
                   </CardActions>
                 </Card>

@@ -12,7 +12,7 @@ const categorySlice = createSlice({
     activeCategory: ''
   },
   reducers: {
-    SET: (state, action) => {
+    setCategory: (state, action) => {
       return {...state, activeCategory: action.payload}
     }
   }
@@ -47,5 +47,5 @@ const categorySlice = createSlice({
 
 
 
-export const { SET } = categorySlice.actions;
+export const { setCategory } = categorySlice.actions;
 export default categorySlice.reducer;
