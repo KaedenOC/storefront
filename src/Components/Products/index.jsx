@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import { useDispatch, useSelector } from 'react-redux';
 import { When } from 'react-if';
 import { CardMedia, Grid } from '@mui/material';
-import { addToCart } from '../../store/actions';
+import { ADD_TO_CART } from '../../store/cart';
 
 export default function Products() {
 
@@ -39,7 +39,7 @@ export default function Products() {
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button onClick={() => dispatch(addToCart(product))} size="small">Add To Cart</Button>
+                    <Button onClick={() => dispatch(ADD_TO_CART(product))} size="small">Add To Cart</Button>
                     <Button size="small">View Details</Button>
                   </CardActions>
                 </Card>

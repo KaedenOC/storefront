@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from "react-redux"
 import { When } from 'react-if';
-import { removeFromCart } from '../../store/actions';
+import { REMOVE } from '../../store/cart';
 import { Button } from "@mui/material";
 
 function SimpleCart() {
-  const { cart } = useSelector(state => state.cart)
+  const { cart } = useSelector(state => state)
   const dispatch = useDispatch();
   return (
     <>
@@ -15,7 +15,7 @@ function SimpleCart() {
             <li key={`simplecart-${index}`}>
               {product.name}
               <Button
-                onClick={() => dispatch(removeFromCart(product))}
+                onClick={() => dispatch(REMOVE(product))}
                 variant="contained"
                 color="error"
                 size="small"
