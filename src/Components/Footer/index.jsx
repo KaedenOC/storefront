@@ -1,10 +1,8 @@
 
 
 function Footer() {
-  return(
-    <>
-    <h2>Kaeden O. 2023</h2>
-    </>
+  return (
+    <footer data-testid='footer'>&copy; Kaeden O. 2023</footer>
   )
 }
 
