@@ -1,8 +1,10 @@
 import { When } from "react-if";
 import { useSelector } from "react-redux";
+import './styles.scss';
+import { Card, CardContent, CardHeader, Grid, Typography } from "@mui/material";
 
 function ShoppingCart() {
-    const { cart } = useSelector((state) => state.cart);
+    const cart = useSelector((state) => state.cart);
 
     const calcTotal = () => {
         let total = 0;
@@ -18,10 +20,16 @@ function ShoppingCart() {
                 <ul>
                     {
                         cart.map((product, index) => (
-                            <li key={`shoppingCart-${index}`} className="item" >
-                                <p>{product.name}</p>
-                                <p>${product.price}</p>
-                            </li>
+                            <Grid sx={{ maxWidth: 345 }} key={`shoppingCart-${index}`} className="item" >
+                              <Card sx={{ maxWidth: 345 }}>
+                                <CardContent>
+                                <Typography gutterBottom variant="h5" component="div">{product.name}</Typography>
+                                <Typography variant="body2" color="text.secondary">${product.price}</Typography>
+
+                                </CardContent>
+
+                              </Card>
+                            </Grid>
                         ))
                     }
                     <li key={`shoppingcart-total`} className="item" >
