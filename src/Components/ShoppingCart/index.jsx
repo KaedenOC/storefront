@@ -1,7 +1,7 @@
 import { When } from "react-if";
 import { useSelector } from "react-redux";
 import './styles.scss';
-import { Card, CardContent, CardHeader, Grid, Typography } from "@mui/material";
+import { Card, CardContent, Grid, Typography } from "@mui/material";
 
 function ShoppingCart() {
     const cart = useSelector((state) => state.cart);

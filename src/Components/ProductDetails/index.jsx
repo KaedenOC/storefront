@@ -1,17 +1,17 @@
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import SimpleCart from "../SimpleCart";
+// import SimpleCart from "../SimpleCart";
 
 function ProductDetails() {
 
     const { id } = useParams();
-    const { products } = useSelector((state) => state.products);
+    const products = useSelector((state) => state.products);
 
     const activeProduct = products.find(product => product._id === id);
     console.log(activeProduct)
     return (
         <>
-        <SimpleCart />
+        {/* <SimpleCart /> */}
         <h1>{activeProduct.name}</h1>
         <h2>${activeProduct.price}</h2>
         <h3>Quantity Available: {activeProduct.inStock}</h3>
