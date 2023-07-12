@@ -49,9 +49,17 @@ export default function Products() {
                     <Typography variant="body2" color="text.secondary">
                       {product.description}
                     </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      Price: ${product.price}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      In-Stock: {product.inStock}
+                    </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button onClick={() => addDispatcher(product)} size="small">Add To Cart</Button>
+                    <When condition={product.inStock}>
+                      <Button onClick={() => addDispatcher(product)} size="small">Add To Cart</Button>
+                    </When>
                     <Button size="small">View Details</Button>
                   </CardActions>
                 </Card>
