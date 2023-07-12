@@ -5,7 +5,7 @@ import { setProducts } from '../../store/products';
 import { ButtonGroup, Button } from '@mui/material';
 
 function Categories() {
-  const { categories } = useSelector((state) => state.categories);
+  const categories = useSelector((state) => state.categories.categories);
   console.log('categories', categories);
 
   const dispatch = useDispatch();

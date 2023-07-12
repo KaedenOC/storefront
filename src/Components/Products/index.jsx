@@ -12,8 +12,8 @@ import { useEffect } from 'react';
 
 export default function Products() {
 
-  const { activeCategory } = useSelector((state) => state.categories)
-  const { products } = useSelector((state) => state);
+  const activeCategory = useSelector((state) => state.categories.activeCategory)
+  const products = useSelector((state) => state.products);
   const dispatch = useDispatch();
 
   const addDispatcher = (product) => {
