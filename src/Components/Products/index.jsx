@@ -69,6 +69,6 @@ export default function Products() {
           }
         </Grid>
       </When>
-    </> 
+    </>
   );
 }
