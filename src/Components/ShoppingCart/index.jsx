@@ -1,7 +1,7 @@
 import { When } from "react-if";
 import { useSelector } from "react-redux";
 import './styles.scss';
-import { Card, CardContent, Grid, Typography } from "@mui/material";
+import { Card, CardContent, CardMedia, Grid, Typography } from "@mui/material";
 
 function ShoppingCart() {
     const cart = useSelector((state) => state.cart);
@@ -21,14 +21,19 @@ function ShoppingCart() {
                     {
                         cart.map((product, index) => (
                             <Grid sx={{ maxWidth: 345 }} key={`shoppingCart-${index}`} className="item" >
-                              <Card sx={{ maxWidth: 345 }}>
-                                <CardContent>
-                                <Typography gutterBottom variant="h5" component="div">{product.name}</Typography>
-                                <Typography variant="body2" color="text.secondary">${product.price}</Typography>
+                                <Card sx={{ maxWidth: 345 }}>
+                                    <CardMedia
+                                        sx={{ height: 140 }}
+                                        image={`https://source.unsplash.com/random?${product.name}`}
+                                        title={product.name}
+                                    />
+                                    <CardContent>
+                                        <Typography gutterBottom variant="h5" component="div">{product.name}</Typography>
+                                        <Typography variant="body2" color="text.secondary">${product.price}</Typography>
 
-                                </CardContent>
+                                    </CardContent>
 
-                              </Card>
+                                </Card>
                             </Grid>
                         ))
                     }
