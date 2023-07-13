@@ -1,20 +1,27 @@
-import Categories from './Components/Categories';
-import Footer from './Components/Footer';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Storefront from './Components/Storefront'
+import ShoppingCart from './Components/ShoppingCart';
+import ProductDetails from './Components/ProductDetails';
 import Header from './Components/Header';
-import Products from './Components/Products';
-import SimpleCart from './Components/SimpleCart';
+import Footer from './Components/Footer';
+// import './App.scss';
 
 function App() {
-
   return (
     <>
-    <Header />
-    <Categories />
-    <SimpleCart />
-    <Products />
-    <Footer />
+      <BrowserRouter>
+        <div className='content'>
+          <Header />
+          <Routes>
+            <Route path="/" element={<Storefront />} />
+            <Route path="/cart" element={<ShoppingCart />} />
+            <Route path="/productDetails/:id" element={<ProductDetails />} />
+          </Routes>
+        </div>
+        <Footer />
+      </BrowserRouter>
     </>
   )
 }
 
-export default App
+export default App;

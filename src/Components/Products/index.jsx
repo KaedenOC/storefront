@@ -7,13 +7,14 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { CardMedia, Grid } from '@mui/material';
 import { addToCart } from '../../store/cart';
-import { addProduct, decrementInventory, getProducts } from '../../store/products';
+import { decrementInventory, getProducts } from '../../store/products';
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Products() {
 
-  const { activeCategory } = useSelector((state) => state.categories)
-  const { products } = useSelector((state) => state);
+  const activeCategory = useSelector((state) => state.categories.activeCategory)
+  const products = useSelector((state) => state.products);
   const dispatch = useDispatch();
 
   const addDispatcher = (product) => {
@@ -60,7 +61,7 @@ export default function Products() {
                     <When condition={product.inStock}>
                       <Button onClick={() => addDispatcher(product)} size="small">Add To Cart</Button>
                     </When>
-                    <Button size="small">View Details</Button>
+                    <Button component={Link} to={`productDetails/${product._id}`} size="small">View Details</Button>
                   </CardActions>
                 </Card>
               </Grid>
